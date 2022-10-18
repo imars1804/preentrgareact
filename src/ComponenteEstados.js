@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-export const ComponenteEstados = ({stock, initial, onAdd}) => {
+export const ComponenteEstados = () => {
 
   const [contador, setContador] = useState(1);
   const [numero, setNumero] = useState(0);
 
   useEffect(()=>{
-    console.log("se ejecuta el useEffect");
     setNumero(numero + 1);
 
-    const intervalo = setInterval(()=>{
-      console.log("ping");
-    },1000)
 
     return(()=>{
       clearInterval(intervalo);
@@ -41,3 +37,6 @@ export const ComponenteEstados = ({stock, initial, onAdd}) => {
     </div>
   );
 };
+
+
+

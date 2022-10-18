@@ -6,10 +6,13 @@ export const Usuarios = () => {
     { nombre: "Jonatan" },
   ]);
 
-  const [nombre, setNombre] = useState("")
+  //const [nombre, setNombre] = useState("")
+
+  const mariano = { nombre: "Mariano" };
 
   const agregarMariano = () => {
-    setUsuarios([...usuarios,{nombre}])
+    setUsuarios([...usuarios, mariano]);
+    /*setUsuarios([...usuarios,{nombre}])*/
   };
 
   const manejarAgregar = (e)=>{

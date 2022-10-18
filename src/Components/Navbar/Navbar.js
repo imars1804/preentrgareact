@@ -2,31 +2,40 @@ import React from "react";
 import logo from "../../assets/logo.jpg";
 import { CartWidget } from "../CartWidget/CartWidget";
 import { styles } from "./Navbar.style";
+import { Link, NavLink } from "react-router-dom";
 
-const Navbar = () => {
-
-
+function Navbar() {
   const categorias = [
-    {nombre:"Categoria 1", id:0, ruta:"#"},
-    {nombre:"Categoria 2", id:1, ruta:"#"},
-    {nombre:"Categoria 3", id:2, ruta:"#"},
-    {nombre:"Categoria 4", id:3, ruta:"#"},
+    { nombre: "electronics", id: 0, ruta: "/categoria/electronics" },
+    { nombre: "jewelery", id: 1, ruta: "/categoria/jewelery" },
+    { nombre: "men's clothing", id: 2, ruta: "/categoria/men's clothing" },
+    { nombre: "women's clothing", id: 3, ruta: "/categoria/women's clothing" },
   ];
 
   return (
     <header style={styles.container}>
-      <img style={styles.imagenes} src={logo} alt="Librería Fantasía" />
-      <h1>Bienvendio</h1>
+      <Link style={styles.imagenes} to="/">
+        <img style={styles.imagenes} src={logo} alt="logo" />
+      </Link>
+      <h1>Librería Fantasía</h1>
       <nav>
-        {
-          categorias.map((categoria)=>{
-            return <a key={categoria.id} style={styles.categorias} href={categoria.ruta}>{categoria.nombre}</a>
-          })
-        }
+        {categorias.map((categoria) => {
+          return (
+            <NavLink
+              key={categoria.id}
+              style={styles.categorias}
+              to={categoria.ruta}
+            >
+              {categoria.nombre}
+            </NavLink>
+          );
+        })}
       </nav>
-      <CartWidget />
+      <Link to="/cart">
+        <CartWidget />
+      </Link>
     </header>
   );
-};
+}
 
 export default Navbar;
